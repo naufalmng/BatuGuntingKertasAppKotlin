@@ -31,25 +31,26 @@ class MainActivity : AppCompatActivity() {
     private val scissors = Scissors("scissors")
     private val listElement = arrayOf(rock, paper, scissors)
 
-    override fun onStart() {
-        super.onStart()
-        Log.i(GAME_SUIT, "==========")
-        Log.i(GAME_SUIT, "GAME SUIT")
-        Log.i(GAME_SUIT, "==========")
-
-    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         constraintLayout.setOnClickListener {
-            Log.i(GAME_SUIT, "==========")
-            Log.i(GAME_SUIT, "GAME SUIT")
-            Log.i(GAME_SUIT, "==========")
+            createLog("==========")
+            createLog("GAME SUIT")
+            createLog("==========")
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        gameSuit()
+    }
+    private fun gameSuit(){
+        createLog("==========")
+        createLog("GAME SUIT")
+        createLog("==========")
     }
 
 
@@ -61,17 +62,19 @@ class MainActivity : AppCompatActivity() {
             createLog("Computer Memilih Batu..")
             result = p1Move.actionVersus(rock).status
             flBatuCom.setBackgroundResource(R.drawable.custom_ripple)
+            createLog("Kamu ${result} ! -> Kamu memilih elemen ${p1Move.element}, dan com memilih elemen ${random.element}")
         }
         if (random == listElement.get(1)) {
             createLog("Computer Memilih Kertas..")
             result = p1Move.actionVersus(paper).status
-            Log.i(GAME_SUIT, result)
             flKertasCom.setBackgroundResource(R.drawable.custom_ripple)
+            createLog("Kamu ${result} ! -> Kamu memilih elemen ${p1Move.element}, dan com memilih elemen ${random.element}")
         }
         if (random == listElement.get(2)) {
             createLog("Computer Memilih Gunting..")
             result = p1Move.actionVersus(scissors).status
             flGuntingCom.setBackgroundResource(R.drawable.custom_ripple)
+            createLog("Kamu ${result} ! -> Kamu memilih elemen ${p1Move.element}, dan com memilih elemen ${random.element}")
         }
         when (result) {
             "win" -> playerMenang()
@@ -96,8 +99,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mulaiSuit() {
-        createLog("MULAI SUIT")
-        createLog("Player 1:")
+        createLog("=== MULAI SUIT ===")
     }
 
     fun playPaperSound() {
