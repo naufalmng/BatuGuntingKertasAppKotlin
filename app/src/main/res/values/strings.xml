@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KBG</string>
+    <string name="app_name">Kertas Batu Gunting</string>
     <string name="title_activity_splashscreen">splashscreen</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

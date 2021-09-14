@@ -84,18 +84,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun gameDraw() {
-        vs_id.visibility = View.GONE
-        draw.visibility = View.VISIBLE
+        center_img.setImageResource(R.drawable.draw)
     }
 
     private fun playerKalah() {
-        vs_id.visibility = View.GONE
-        p2_menang.visibility = View.VISIBLE
+        center_img.setImageResource(R.drawable.pemain2_menang)
     }
 
     private fun playerMenang() {
-        vs_id.visibility = View.GONE
-        p1_menang.visibility = View.VISIBLE
+        center_img.setImageResource(R.drawable.pemain1_menang)
     }
 
     private fun mulaiSuit() {
@@ -125,10 +122,7 @@ class MainActivity : AppCompatActivity() {
         flBatuCom.setBackgroundResource(0)
         flKertasCom.setBackgroundResource(0)
         flGuntingCom.setBackgroundResource(0)
-        vs_id.visibility = View.VISIBLE
-        p1_menang.visibility = View.GONE
-        p2_menang.visibility = View.GONE
-        draw.visibility = View.GONE
+        center_img.setImageResource(R.drawable.vs)
         kertasPlayer.isEnabled = true
         guntingPlayer.isEnabled = true
         batuPlayer.isEnabled = true
