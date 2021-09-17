@@ -22,9 +22,8 @@ class MainActivity : AppCompatActivity() {
             Log.i(GAME_SUIT, msg)
         }
     }
-
     private lateinit var p1Move: Suit
-
+    var mp = MediaPlayer()
 
     private val rock = Rock("rock")
     private val paper = Paper("paper")
@@ -101,19 +100,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun playPaperSound() {
-        MediaPlayer.create(baseContext, R.raw.paper_sound).start()
+        mp.release()
+        mp = MediaPlayer.create(this@MainActivity, R.raw.paper_sound)
+        mp.start()
     }
 
     fun playRockSound() {
-        MediaPlayer.create(baseContext, R.raw.rock_sound).start()
+        mp.release()
+        mp = MediaPlayer.create(this@MainActivity, R.raw.rock_sound)
+        mp.start()
     }
 
     fun playScissorSound() {
-        MediaPlayer.create(baseContext, R.raw.scissors_sound).start()
+        mp.release()
+        mp = MediaPlayer.create(this@MainActivity, R.raw.scissors_sound)
+        mp.start()
     }
     fun playButtonSound() {
-            MediaPlayer.create(baseContext, R.raw.button_sound).start()
+        mp.release()
+        mp = MediaPlayer.create(this@MainActivity, R.raw.button_sound)
+        mp.start()
     }
+
 
     fun resetGame(v: View) {
         playButtonSound()
