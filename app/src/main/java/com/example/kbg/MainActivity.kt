@@ -59,28 +59,29 @@ class MainActivity : AppCompatActivity() {
         val random = listElement.random()
         var result = ""
         if (random == listElement.get(0)) {
-            createLog("Computer Memilih Batu..")
+            createLog("Computer choose rock..")
             result = p1Move.actionVersus(rock).status
             flBatuCom.setBackgroundResource(R.drawable.custom_ripple)
-            createLog("Kamu ${result} ! -> Kamu memilih elemen ${p1Move.element}, dan com memilih elemen ${random.element}")
+            createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
         }
         if (random == listElement.get(1)) {
-            createLog("Computer Memilih Kertas..")
+            createLog("Computer choose paper..")
             result = p1Move.actionVersus(paper).status
             flKertasCom.setBackgroundResource(R.drawable.custom_ripple)
-            createLog("Kamu ${result} ! -> Kamu memilih elemen ${p1Move.element}, dan com memilih elemen ${random.element}")
+            createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
         }
         if (random == listElement.get(2)) {
-            createLog("Computer Memilih Gunting..")
+            createLog("Computer choose scissors..")
             result = p1Move.actionVersus(scissors).status
             flGuntingCom.setBackgroundResource(R.drawable.custom_ripple)
-            createLog("Kamu ${result} ! -> Kamu memilih elemen ${p1Move.element}, dan com memilih elemen ${random.element}")
+            createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
         }
         when (result) {
             "win" -> playerMenang()
             "lose" -> playerKalah()
             "draw" -> gameDraw()
         }
+
     }
 
     private fun gameDraw() {
@@ -96,7 +97,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mulaiSuit() {
-        createLog("=== MULAI SUIT ===")
+        createLog("MULAI SUIT..")
     }
 
     fun playPaperSound() {
@@ -133,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         playRockSound()
         mulaiSuit()
         p1Move = rock
-        createLog("Player 1 memilih batu..")
+        createLog("Player 1 choose rock..")
         startSuitWithCom(p1Move)
         flBatuPlayer.setBackgroundResource(R.drawable.custom_ripple)
         kertasPlayer.isEnabled = false
@@ -145,7 +146,7 @@ class MainActivity : AppCompatActivity() {
         playPaperSound()
         mulaiSuit()
         p1Move = paper
-        createLog("Player 1 memilih kertas..")
+        createLog("Player 1 choose paper..")
         startSuitWithCom(p1Move)
         flKertasPlayer.setBackgroundResource(R.drawable.custom_ripple)
         batuPlayer.isEnabled = false
@@ -157,7 +158,7 @@ class MainActivity : AppCompatActivity() {
         playScissorSound()
         mulaiSuit()
         p1Move = scissors
-        createLog("Player 1 memilih gunting..")
+        createLog("Player 1 choose scissors..")
         startSuitWithCom(p1Move)
         flGuntingPlayer.setBackgroundResource(R.drawable.custom_ripple)
         kertasPlayer.isEnabled = false
