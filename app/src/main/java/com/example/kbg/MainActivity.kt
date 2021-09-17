@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var p1Move: Suit
 
-    //com
+
     private val rock = Rock("rock")
     private val paper = Paper("paper")
     private val scissors = Scissors("scissors")
