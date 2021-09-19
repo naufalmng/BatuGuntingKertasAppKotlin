@@ -8,11 +8,11 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.RawRes
 import androidx.appcompat.app.AppCompatActivity
+import com.example.kbg.databinding.ActivityMainBinding
 import com.example.kbg.elements.Paper
 import com.example.kbg.elements.Rock
 import com.example.kbg.elements.Scissors
 import com.example.kbg.suit.Suit
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,17 +30,20 @@ class MainActivity : AppCompatActivity() {
     private val scissors = Scissors("scissors")
     private val listElement = arrayOf(rock, paper, scissors)
 
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        constraintLayout.setOnClickListener {
+        binding.constraintLayout.setOnClickListener {
             createLog("==========")
             createLog("GAME SUIT")
             createLog("==========")
         }
-    }
+        }
 
     override fun onResume() {
         super.onResume()
@@ -60,19 +63,19 @@ class MainActivity : AppCompatActivity() {
         if (random == listElement.get(0)) {
             createLog("Computer choose rock..")
             result = p1Move.actionVersus(rock).status
-            flBatuCom.setBackgroundResource(R.drawable.custom_ripple)
+            binding.flBatuCom.setBackgroundResource(R.drawable.custom_ripple)
             createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
         }
         if (random == listElement.get(1)) {
             createLog("Computer choose paper..")
             result = p1Move.actionVersus(paper).status
-            flKertasCom.setBackgroundResource(R.drawable.custom_ripple)
+            binding.flKertasCom.setBackgroundResource(R.drawable.custom_ripple)
             createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
         }
         if (random == listElement.get(2)) {
             createLog("Computer choose scissors..")
             result = p1Move.actionVersus(scissors).status
-            flGuntingCom.setBackgroundResource(R.drawable.custom_ripple)
+            binding.flGuntingCom.setBackgroundResource(R.drawable.custom_ripple)
             createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
         }
         when (result) {
@@ -84,15 +87,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun gameDraw() {
-        center_img.setImageResource(R.drawable.draw)
+        binding.centerImg.setImageResource(R.drawable.draw)
     }
 
     private fun playerKalah() {
-        center_img.setImageResource(R.drawable.pemain2_menang)
+        binding.centerImg.setImageResource(R.drawable.pemain2_menang)
     }
 
     private fun playerMenang() {
-        center_img.setImageResource(R.drawable.pemain1_menang)
+        binding.centerImg.setImageResource(R.drawable.pemain1_menang)
     }
 
     private fun mulaiSuit() {
@@ -125,16 +128,16 @@ class MainActivity : AppCompatActivity() {
 
     fun resetGame(v: View) {
         playButtonSound()
-        flBatuPlayer.setBackgroundResource(0)
-        flKertasPlayer.setBackgroundResource(0)
-        flGuntingPlayer.setBackgroundResource(0)
-        flBatuCom.setBackgroundResource(0)
-        flKertasCom.setBackgroundResource(0)
-        flGuntingCom.setBackgroundResource(0)
-        center_img.setImageResource(R.drawable.vs)
-        kertasPlayer.isEnabled = true
-        guntingPlayer.isEnabled = true
-        batuPlayer.isEnabled = true
+        binding.flBatuPlayer.setBackgroundResource(0)
+        binding.flKertasPlayer.setBackgroundResource(0)
+        binding.flGuntingPlayer.setBackgroundResource(0)
+        binding.flBatuCom.setBackgroundResource(0)
+        binding.flKertasCom.setBackgroundResource(0)
+        binding.flGuntingCom.setBackgroundResource(0)
+        binding.centerImg.setImageResource(R.drawable.vs)
+        binding.kertasPlayer.isEnabled = true
+        binding.guntingPlayer.isEnabled = true
+        binding.batuPlayer.isEnabled = true
     }
 
 
@@ -144,10 +147,10 @@ class MainActivity : AppCompatActivity() {
         p1Move = rock
         createLog("Player 1 choose rock..")
         startSuitWithCom(p1Move)
-        flBatuPlayer.setBackgroundResource(R.drawable.custom_ripple)
-        kertasPlayer.isEnabled = false
-        guntingPlayer.isEnabled = false
-        batuPlayer.isEnabled = false
+        binding.flBatuPlayer.setBackgroundResource(R.drawable.custom_ripple)
+        binding.kertasPlayer.isEnabled = false
+        binding.guntingPlayer.isEnabled = false
+        binding.batuPlayer.isEnabled = false
     }
 
     fun paperButtonTapped(v: View) {
@@ -156,10 +159,10 @@ class MainActivity : AppCompatActivity() {
         p1Move = paper
         createLog("Player 1 choose paper..")
         startSuitWithCom(p1Move)
-        flKertasPlayer.setBackgroundResource(R.drawable.custom_ripple)
-        batuPlayer.isEnabled = false
-        guntingPlayer.isEnabled = false
-        kertasPlayer.isEnabled = false
+        binding.flKertasPlayer.setBackgroundResource(R.drawable.custom_ripple)
+        binding.batuPlayer.isEnabled = false
+        binding.guntingPlayer.isEnabled = false
+        binding.kertasPlayer.isEnabled = false
     }
 
     fun scissorButtonTapped(v: View) {
@@ -168,9 +171,9 @@ class MainActivity : AppCompatActivity() {
         p1Move = scissors
         createLog("Player 1 choose scissors..")
         startSuitWithCom(p1Move)
-        flGuntingPlayer.setBackgroundResource(R.drawable.custom_ripple)
-        kertasPlayer.isEnabled = false
-        batuPlayer.isEnabled = false
-        guntingPlayer.isEnabled = false
+        binding.flGuntingPlayer.setBackgroundResource(R.drawable.custom_ripple)
+        binding.kertasPlayer.isEnabled = false
+        binding.batuPlayer.isEnabled = false
+        binding.guntingPlayer.isEnabled = false
     }
 }

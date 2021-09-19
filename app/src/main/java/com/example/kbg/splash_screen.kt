@@ -5,19 +5,29 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
-import kotlinx.android.synthetic.main.activity_splash_screen.*
+import com.example.kbg.databinding.ActivitySplashScreenBinding
 
 class splash_screen : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+    private lateinit var binding: ActivitySplashScreenBinding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+         val view = binding.root
+         setContentView(view)
+        handlerSplashScreen()
+        animationHook()
+       }
+
+    private fun handlerSplashScreen(){
         Handler().postDelayed({
             startActivity(Intent(this,MainActivity::class.java))
             finish()
         },1500)
+    }
 
+    private fun animationHook(){
         // hook
-        bgk_logo.animation = AnimationUtils.loadAnimation(this,R.anim.top_animation)
+        binding.bgkLogo.animation = AnimationUtils.loadAnimation(this,R.anim.top_animation)
     }
 }
