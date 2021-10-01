@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:background="@color/biru_background"
 
     tools:context=".splash_screen">
@@ -11,9 +12,20 @@
     <ImageView
         android:id="@+id/bgk_logo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/bgk"
+        android:layout_height="275dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
+        android:layout_marginTop="42dp"
+        android:src="@drawable/bkg"/>
+
+    <ImageView
+        android:id="@+id/bgk_logo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bgk_logo"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="120dp"
+        android:src="@drawable/splash_screen2" />
 
 </RelativeLayout>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/bg_color"
+    tools:context=".activity.main_menu">
+
+    <ImageView
+        android:id="@+id/text_pilihlawanmu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/pilih_lawanmu"/>
+
+    <ImageButton
+        android:id="@+id/lp1_img"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_landing_page1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/text_pilihlawanmu"/>
+
+    <LinearLayout
+        android:id="@+id/ll_vs_pemain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lp1_img"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvP1VsPemain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:layout_below="@id/lp1_img"
+            android:textAlignment="center"
+            android:text="p1Name"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/tvP1VsPemain"
+            android:layout_below="@id/lp1_img"
+            android:text="vs Pemain"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+
+
+    <ImageButton
+        android:id="@+id/lp2_img"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:src="@drawable/ic_landing_page2"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/ll_vs_pemain"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_vs_cpu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lp2_img"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvP1VsCpu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:text="p1Name"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/open_sans_semibold"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/tvP1VsPemain"
+            android:textColor="@color/black"
+            android:layout_below="@id/lp1_img"
+            android:text="vs Com"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="346dp"
+        android:layout_height="40dp"
+        android:paddingLeft="15dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rectangle_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/customView">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/white"
+            android:text="Selamat Datang"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_name_toast"
+            android:layout_marginLeft="3dp"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/white"
+            android:text="Name"
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/tutup_btn"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:text="Tutup"
+            android:textSize="17dp"
+            android:textColor="#FF9900"
+            android:background="@android:color/transparent"
+            android:backgroundTint="@android:color/transparent"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

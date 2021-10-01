@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".activity.custom_dialog">
+
+        <LinearLayout
+            android:layout_width="275dp"
+            android:layout_height="270dp"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:background="@drawable/rectangle_bg"
+            android:backgroundTint="@color/white">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:text="Hasil Permainan"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/tv_dialog_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:includeFontPadding="false"
+                android:text="P1"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#434343"
+                android:textSize="24dp" />
+            <TextView
+                android:id="@+id/tv_dialog_result_suit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:textColor="#434343"
+                android:textAlignment="center"
+                android:fontFamily="sans-serif-black"
+                android:textAllCaps="true"
+                android:textSize="28dp"
+                android:text="STATUS!"/>
+
+            <Button
+                android:enabled="true"
+                android:id="@+id/button_main_lagi"
+                android:layout_width="230dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="50dp"
+                android:stateListAnimator="@null"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rectangle_bg"
+                android:backgroundTint="#00FF00"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:paddingBottom="10dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:text="Main Lagi"/>
+
+            <Button
+                android:enabled="true"
+                android:id="@+id/button_kembali"
+                android:layout_width="230dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="50dp"
+                android:paddingBottom="10dp"
+                android:layout_marginLeft="5dp"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_bg"
+                android:backgroundTint="#FF9900"
+                android:textAlignment="center"
+                android:textSize="14dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:text="Kembali Ke Menu"/>
+
+
+        </LinearLayout>
+</FrameLayout>

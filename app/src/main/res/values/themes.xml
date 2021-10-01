@@ -15,8 +15,24 @@
     </style>
 
     <style name="NoActionBar">
+        <item name="android:background">#DDEAF6</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="customToastStyle">
+        <item name="stTextBold">true</item>
+        <item name="stTextColor">@color/black</item>
+        <item name="stFont">@font/open_sans_semibold</item>
+        <item name="stTextSize">16dp</item>
+        <item name="stColorBackground">#E6E4BB</item>
+        <item name="stSolidBackground">true</item>
+        <item name="stStrokeWidth">1dp</item>
+        <item name="stStrokeColor">#E6E4BB</item>
+        <item name="contentPaddingBottom">5dp</item>
+        <item name="duration">1000</item>
+        <item name="stLength">LONG</item> LONG or SHORT
+        <item name="stRadius">10dp</item>
     </style>
 
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

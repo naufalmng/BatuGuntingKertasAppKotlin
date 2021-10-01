@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
+import com.example.kbg.activity.landing_page
 import com.example.kbg.databinding.ActivitySplashScreenBinding
 
 class splash_screen : AppCompatActivity() {
@@ -21,7 +22,7 @@ class splash_screen : AppCompatActivity() {
 
     private fun handlerSplashScreen(){
         Handler().postDelayed({
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, landing_page::class.java))
             finish()
         },1500)
     }
@@ -29,5 +30,6 @@ class splash_screen : AppCompatActivity() {
     private fun animationHook(){
         // hook
         binding.bgkLogo.animation = AnimationUtils.loadAnimation(this,R.anim.top_animation)
+        binding.bgkLogo2.animation = AnimationUtils.loadAnimation(this,R.anim.bottom_animation)
     }
 }

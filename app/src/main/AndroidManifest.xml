@@ -4,22 +4,35 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/bgk"
+        android:icon="@drawable/bkg"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/bgk"
+        android:roundIcon="@drawable/bkg"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".replicateLayout.replicate_layout_telegram"
+        <activity android:name=".activity.suit_vs_com"></activity>
+        <activity android:name=".activity.suit_vs_pemain"></activity>
+        <activity
+            android:name=".activity.main_menu"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".splash_screen"
+        <activity
+            android:name=".activity.landing_page"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".replicateLayout.replicate_layout_telegram"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".splash_screen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".activity.suit_vs_cpu"
             android:screenOrientation="portrait"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
