@@ -12,14 +12,12 @@ class LandingPageAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle):
     override fun getItemCount(): Int {
         return 3
     }
-
     override fun createFragment(position: Int): Fragment {
        return when(position){
-            0 -> landing_page1()
-            1 -> landing_page2()
-            2 -> landing_page3()
+            0 -> landing_page1("https://i.ibb.co/x2JT0XQ/landing-page1.png")
+            1 -> landing_page2("https://i.ibb.co/RbCSDdn/landing-page2.png")
+            2 -> landing_page3("https://i.ibb.co/6Zmp3b4/landing-page3.png")
             else -> Fragment()
         }
     }
-
 }

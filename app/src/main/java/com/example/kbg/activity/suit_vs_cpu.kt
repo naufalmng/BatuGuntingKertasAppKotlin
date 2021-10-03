@@ -17,6 +17,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.example.kbg.R
 import com.example.kbg.databinding.ActivitySuitVsCpuBinding
+import com.example.kbg.databinding.FragmentCustomDialogBinding
 import com.example.kbg.elements.Paper
 import com.example.kbg.elements.Rock
 import com.example.kbg.elements.Scissors
@@ -28,16 +29,20 @@ import io.github.muddz.styleabletoast.StyleableToast
 class suit_vs_cpu : AppCompatActivity() {
     companion object {
         val GAME_SUIT = "GAME_SUIT"
-        open fun createLog(msg: String) {
+         fun createLog(msg: String) {
             Log.i(GAME_SUIT, msg)
         }
     }
     private lateinit var p1Move: Suit
+    private lateinit var com: Suit
     var mp = MediaPlayer()
 
     val menang = "MENANG!"
     val seri = "SERI!"
     val cpu = "CPU"
+    private var p1ButtonClicked: Boolean = false
+    private var comButtonClicked: Boolean = false
+    var result: String? = null
 
 
 
@@ -94,51 +99,41 @@ class suit_vs_cpu : AppCompatActivity() {
         createLog("GAME SUIT")
         createLog("==========")
     }
-
+    private fun checkButtonClicked(comMove: Suit){
+        if (p1ButtonClicked == true && comButtonClicked == true){
+            suit_vs_pemain.createLog("Player 1 choose ${p1Move.element}")
+            suit_vs_pemain.createLog("Com choose ${comMove.element}")
+        }
+    }
     private fun startSuitWithCom(p1Move: Suit) {
-
-////        fun showToast(int: Int) {
-////            when (int){
-//                0 ->
-//                1 -> StyleableToast.makeText(this,"CPU Memiilih Kertas",Toast.LENGTH_SHORT,R.style.customToastStyle).show()
-//                2 -> StyleableToast.makeText(this,"CPU Memiilih Gunting",Toast.LENGTH_SHORT,R.style.customToastStyle).show()
-////            }
-////
-////
-//////            fun showToastCpuBatu(){
-//////                val toastView = layoutInflater.inflate(R.layout.custom_toast_cpu_batu,
-//////                    findViewById(R.id.ll_toast_cpu_batu)
-//////                )
-//////                with(Toast(applicationContext)){
-//////                duration = Toast.LENGTH_SHORT
-//////                view = toastView
-//////}
-//////            }
-////        }
 
 
         val random = listElement.random()
-        var result: String? = null
         if (random == listElement.get(0)) {
-            createLog("Computer choose rock..")
+            p1ButtonClicked = true
+            comButtonClicked = true
             result = p1Move.actionVersus(rock).status
             binding.flBatuCom.setBackgroundResource(R.drawable.custom_ripple)
             StyleableToast.makeText(this,"CPU Memiilih Batu",Toast.LENGTH_SHORT,R.style.customToastStyle).show()
-            createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
+            checkButtonClicked(rock)
+            createLog("You ${result} ! -> You choose ${p1Move.element}, and computer choose ${random.element}")
         }
         if (random == listElement.get(1)) {
-            createLog("Computer choose paper..")
+            p1ButtonClicked = true
+            comButtonClicked = true
             result = p1Move.actionVersus(paper).status
             binding.flKertasCom.setBackgroundResource(R.drawable.custom_ripple)
             StyleableToast.makeText(this,"CPU Memiilih Kertas",Toast.LENGTH_SHORT,R.style.customToastStyle).show()
-            createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
+            checkButtonClicked(paper)
+            createLog("You ${result} ! -> You choose ${p1Move.element}, and computer choose ${random.element}")
         }
         if (random == listElement.get(2)) {
-            createLog("Computer choose scissors..")
+            comButtonClicked = true
             result = p1Move.actionVersus(scissors).status
             binding.flGuntingCom.setBackgroundResource(R.drawable.custom_ripple)
             StyleableToast.makeText(this,"CPU Memiilih Gunting",Toast.LENGTH_SHORT,R.style.customToastStyle).show()
-            createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${random.element}")
+            checkButtonClicked(scissors)
+            createLog("You ${result} ! -> You choose ${p1Move.element}, and computer choose ${random.element}")
         }
         when (result) {
             "win" -> p1Menang()
@@ -189,29 +184,27 @@ class suit_vs_cpu : AppCompatActivity() {
     private fun showCustomDialog(status: String){
 
         val playerName = intent.getStringExtra("playerName").toString()
-        val view = View.inflate(this,R.layout.fragment_custom_dialog,null)
+//        val view = View.inflate(this,R.layout.fragment_custom_dialog,null)
         val builder = AlertDialog.Builder(this)
-        builder.setView(view)
+        val bind: FragmentCustomDialogBinding = FragmentCustomDialogBinding.inflate(layoutInflater)
+        builder.setView(bind.root)
         val customDialog = builder.create()
         customDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        val buttonMainLagi = view.findViewById<Button>(R.id.button_main_lagi)
-        val buttonKembali = view.findViewById<Button>(R.id.button_kembali)
-        val tvDialogPlayerName = view.findViewById<TextView>(R.id.tv_dialog_player_name)
-        val tvDialogResultSuit = view.findViewById<TextView>(R.id.tv_dialog_result_suit)
+
 
         fun setTextViewCustomDialog(){
             if(status.equals("playerMenang")){
-                tvDialogPlayerName?.text = playerName
-                tvDialogResultSuit?.text = menang
+                bind.tvDialogPlayerName.text =  playerName
+                bind.tvDialogResultSuit.text = menang
             }
             if(status.equals("playerKalah")){
-                tvDialogPlayerName?.text = cpu
-                tvDialogResultSuit?.text = menang
+                bind.tvDialogPlayerName.text = cpu
+                bind.tvDialogResultSuit.text = menang
             }
             if(status.equals("seri")){
-                tvDialogPlayerName?.visibility = View.INVISIBLE
-                tvDialogResultSuit?.text = seri
+                bind.tvDialogPlayerName.visibility = View.INVISIBLE
+                bind.tvDialogResultSuit.text = seri
             }
         }
 
@@ -219,12 +212,12 @@ class suit_vs_cpu : AppCompatActivity() {
         customDialog.setCanceledOnTouchOutside(false)
         customDialog.show()
 
-        buttonMainLagi?.setOnClickListener {
-            tvDialogPlayerName?.visibility = View.VISIBLE
-            tvDialogPlayerName?.text = "P1"
+        bind.buttonMainLagi.setOnClickListener {
+            bind.tvDialogPlayerName.visibility = View.VISIBLE
+            bind.tvDialogPlayerName.text = "P1"
             customDialog.dismiss()
         }
-        buttonKembali?.setOnClickListener {
+        bind.buttonKembali.setOnClickListener {
             customDialog.dismiss()
             finish()
         }
@@ -272,6 +265,8 @@ class suit_vs_cpu : AppCompatActivity() {
         binding.kertasPlayer.isEnabled = true
         binding.guntingPlayer.isEnabled = true
         binding.batuPlayer.isEnabled = true
+        p1ButtonClicked = false
+        comButtonClicked = false
 
 //        tvDialogWinnerName.visibility = View.VISIBLE
     }
@@ -281,7 +276,6 @@ class suit_vs_cpu : AppCompatActivity() {
         playRockSound()
         mulaiSuit()
         p1Move = rock
-        createLog("Player 1 choose rock..")
         startSuitWithCom(p1Move)
         binding.flBatuPlayer.setBackgroundResource(R.drawable.custom_ripple)
         binding.kertasPlayer.isEnabled = false
@@ -293,7 +287,6 @@ class suit_vs_cpu : AppCompatActivity() {
         playPaperSound()
         mulaiSuit()
         p1Move = paper
-        createLog("Player 1 choose paper..")
         startSuitWithCom(p1Move)
         binding.flKertasPlayer.setBackgroundResource(R.drawable.custom_ripple)
         binding.batuPlayer.isEnabled = false
@@ -305,7 +298,6 @@ class suit_vs_cpu : AppCompatActivity() {
         playScissorSound()
         mulaiSuit()
         p1Move = scissors
-        createLog("Player 1 choose scissors..")
         startSuitWithCom(p1Move)
         binding.flGuntingPlayer.setBackgroundResource(R.drawable.custom_ripple)
         binding.kertasPlayer.isEnabled = false

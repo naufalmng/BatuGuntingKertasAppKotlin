@@ -25,8 +25,8 @@ class landing_page : AppCompatActivity() {
         binding.etPlayerName.visibility = View.GONE
         binding.nextBtn.isClickable = false
          setContentView(view)
-        initSetAdapterViewPager()
-        initSetTabLayoutMediator()
+        setAdapterViewPager()
+        setTabLayoutMediator()
         setOnPageChangeListener()
         toggleDisableEnableNextBtn()
        }
@@ -45,7 +45,6 @@ class landing_page : AppCompatActivity() {
     }
 
     private fun toggleDisableEnableNextBtn(){
-        val name = binding.etPlayerName.text.toString()
         binding.etPlayerName.addTextChangedListener(object: TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -77,12 +76,12 @@ class landing_page : AppCompatActivity() {
     }
 
 
-    private fun initSetAdapterViewPager(){
+    private fun setAdapterViewPager(){
         val adapter = LandingPageAdapter(supportFragmentManager,lifecycle)
         binding.vp2Lp.adapter = adapter
     }
 
-    private fun initSetTabLayoutMediator(){
+    private fun setTabLayoutMediator(){
         val tabLayout = binding.tabLayoutLp
         val viewPager2 = binding.vp2Lp
         TabLayoutMediator(tabLayout,viewPager2){
@@ -117,7 +116,5 @@ class landing_page : AppCompatActivity() {
         val editTextView = binding.etPlayerName
         buttonNext.visibility = View.VISIBLE
         editTextView.visibility = View.VISIBLE
-
-
     }
 }

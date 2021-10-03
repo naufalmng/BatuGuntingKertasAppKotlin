@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.kbg.R
 import com.example.kbg.databinding.ActivitySuitVsPemainBinding
+import com.example.kbg.databinding.FragmentCustomDialogBinding
 import com.example.kbg.elements.Paper
 import com.example.kbg.elements.Rock
 import com.example.kbg.elements.Scissors
@@ -20,18 +21,20 @@ import io.github.muddz.styleabletoast.StyleableToast
 class suit_vs_pemain : AppCompatActivity() {
     companion object {
         val GAME_SUIT = "GAME_SUIT"
-        open fun createLog(msg: String) {
+        fun createLog(msg: String) {
             Log.i(GAME_SUIT, msg)
         }
     }
     private lateinit var p1Move: Suit
     private lateinit var p2Move: Suit
     private var mp = MediaPlayer()
+    private var p2ButtonClicked: Boolean = false
+    private var p1ButtonClicked: Boolean = false
 
     private val menang = "MENANG!"
     private val seri = "SERI!"
     private val player2 = "Pemain 2"
-
+    var result: String? = null
 
     private val rock = Rock("rock")
     private val paper = Paper("paper")
@@ -100,10 +103,9 @@ class suit_vs_pemain : AppCompatActivity() {
 
     private fun startSuit(p1Move: Suit,p2Move: Suit) {
 
-        var result: String? = null
+
         result = p1Move.actionVersus(p2Move).status
         StyleableToast.makeText(this, "Player 2 Memiilih ${p2Move.element}", Toast.LENGTH_SHORT, R.style.customToastStyle).show()
-        createLog("You ${result} ! -> You chose ${p1Move.element}, and computer chose ${p2Move.element}")
 
         when (result) {
             "win" -> p1Menang()
@@ -112,21 +114,34 @@ class suit_vs_pemain : AppCompatActivity() {
         }
     }
 
-
+    private fun checkButtonClicked(){
+        if (p1ButtonClicked == true && p2ButtonClicked == true){
+            createLog("Player 1 choose ${p1Move.element}")
+            createLog("Player 2 choose ${p2Move.element}")
+        }
+    }
     private fun sendSuitStatus(status: String) {
         val intent = intent
 
         fun playerMenang() {
             val name = intent.getStringExtra("playerNameToActivityVsCom").toString()
             showCustomDialog("p1Menang")
+            checkButtonClicked()
+            createLog("Player 1 ${result} ! -> Player 1 choose ${p1Move.element}, and Player 2 choose ${p2Move.element}")
         }
 
         fun player2Menang() {
             showCustomDialog("p2Menang")
+            checkButtonClicked()
+            createLog("Player 2 ${result} ! -> Player 1 choose ${p1Move.element}, and Player 2 choose ${p2Move.element}")
+
         }
 
         fun seri() {
             showCustomDialog("seri")
+            checkButtonClicked()
+            createLog("Player 1 and Player 2 ${result} ! -> Player 1 choose ${p1Move.element}, and Player 2 choose ${p2Move.element}")
+
         }
 
         when (status) {
@@ -153,29 +168,24 @@ class suit_vs_pemain : AppCompatActivity() {
     private fun showCustomDialog(status: String) {
 
         val playerName = intent.getStringExtra("playerName").toString()
-        val view = View.inflate(this, R.layout.fragment_custom_dialog, null)
         val builder = AlertDialog.Builder(this)
-        builder.setView(view)
+        val bind: FragmentCustomDialogBinding = FragmentCustomDialogBinding.inflate(layoutInflater)
+        builder.setView(bind.root)
         val customDialog = builder.create()
         customDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        val buttonMainLagi = view.findViewById<Button>(R.id.button_main_lagi)
-        val buttonKembali = view.findViewById<Button>(R.id.button_kembali)
-        val tvDialogPlayerName = view.findViewById<TextView>(R.id.tv_dialog_player_name)
-        val tvDialogResultSuit = view.findViewById<TextView>(R.id.tv_dialog_result_suit)
-
         fun setTextViewCustomDialog() {
             if (status.equals("p1Menang")) {
-                tvDialogPlayerName?.text = playerName
-                tvDialogResultSuit?.text = menang
+                bind.tvDialogPlayerName.text = playerName
+                bind.tvDialogResultSuit.text = menang
             }
             if (status.equals("p2Menang")) {
-                tvDialogPlayerName?.text = player2
-                tvDialogResultSuit?.text = menang
+                bind.tvDialogPlayerName.text = player2
+                bind.tvDialogResultSuit.text = menang
             }
             if (status.equals("seri")) {
-                tvDialogPlayerName?.visibility = View.INVISIBLE
-                tvDialogResultSuit?.text = seri
+                bind.tvDialogPlayerName.visibility = View.INVISIBLE
+                bind.tvDialogResultSuit.text = seri
             }
         }
 
@@ -183,12 +193,12 @@ class suit_vs_pemain : AppCompatActivity() {
         customDialog.setCanceledOnTouchOutside(false)
         customDialog.show()
 
-        buttonMainLagi?.setOnClickListener {
-            tvDialogPlayerName?.visibility = View.VISIBLE
-            tvDialogPlayerName?.text = "P1"
+        bind.buttonMainLagi.setOnClickListener {
+            bind.tvDialogPlayerName.visibility = View.VISIBLE
+            bind.tvDialogPlayerName.text = "P1"
             customDialog.dismiss()
         }
-        buttonKembali?.setOnClickListener {
+        bind.buttonKembali.setOnClickListener {
             customDialog.dismiss()
             finish()
         }
@@ -235,59 +245,61 @@ class suit_vs_pemain : AppCompatActivity() {
         binding.flGuntingP2.setBackgroundResource(0)
         toggleEnableAllButton()
         toggleRevealAllP1Button()
+        p1ButtonClicked = false
+        p2ButtonClicked = false
 
 //        tvDialogWinnerName.visibility = View.VISIBLE
     }
 
 
     fun p1RockButtonTapped() {
+        p1ButtonClicked = true
         mulaiSuit()
         p1Move = rock
-        createLog("Player 1 choose rock..")
         binding.flBatuPlayer.setBackgroundResource(R.drawable.custom_ripple)
         toggleDisableAllP1Button()
         toggleHideAllP1Button()
     }
 
     fun p1PaperButtonTapped() {
+        p1ButtonClicked = true
         mulaiSuit()
         p1Move = paper
-        createLog("Player 1 choose paper..")
         binding.flKertasPlayer.setBackgroundResource(R.drawable.custom_ripple)
         toggleDisableAllP1Button()
         toggleHideAllP1Button()
     }
 
     fun p1ScissorButtonTapped() {
+        p1ButtonClicked = true
         mulaiSuit()
         p1Move = scissors
-        createLog("Player 1 choose scissors..")
         binding.flGuntingPlayer.setBackgroundResource(R.drawable.custom_ripple)
         toggleDisableAllP1Button()
         toggleHideAllP1Button()
     }
     fun p2RockButtonTapped() {
+        p2ButtonClicked = true
         p2Move = rock
         startSuit(p1Move,p2Move)
-        createLog("Player 2 choose rock..")
         binding.flBatuP2.setBackgroundResource(R.drawable.custom_ripple)
         toggleDisableAllP2Button()
         toggleRevealAllP1Button()
     }
 
     fun p2PaperButtonTapped() {
+        p2ButtonClicked = true
         p2Move = paper
         startSuit(p1Move,p2Move)
-        createLog("Player 2 choose paper..")
         binding.flKertasP2.setBackgroundResource(R.drawable.custom_ripple)
         toggleDisableAllP2Button()
         toggleRevealAllP1Button()
     }
 
     fun p2ScissorButtonTapped() {
+        p2ButtonClicked = true
         p2Move = scissors
         startSuit(p1Move,p2Move)
-        createLog("Player 2 choose scissors..")
         binding.flGuntingP2.setBackgroundResource(R.drawable.custom_ripple)
         toggleDisableAllP2Button()
         toggleRevealAllP1Button()

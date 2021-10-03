@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kbg">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/bkg"
@@ -9,11 +11,15 @@
         android:roundIcon="@drawable/bkg"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activity.suit_vs_com"></activity>
-        <activity android:name=".activity.suit_vs_pemain"></activity>
+        <activity android:name=".activity.suit_vs_pemain"
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".activity.main_menu"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity
             android:name=".activity.landing_page"
             android:screenOrientation="portrait" />
@@ -31,11 +37,12 @@
         </activity>
         <activity
             android:name=".activity.suit_vs_cpu"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>

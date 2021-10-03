@@ -5,17 +5,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.annotation.GlideModule
 import com.example.kbg.R
+import com.example.kbg.databinding.FragmentLandingPage1Binding
 
+class landing_page1( private val imgUrlSlider: String) :
 
-class landing_page1 : Fragment() {
-
+    Fragment(R.layout.fragment_landing_page1) {
+    private lateinit var binding: FragmentLandingPage1Binding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_landing_page1, container, false)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentLandingPage1Binding.bind(view)
+        setDataImage()
+    }
+
+
+    private fun setDataImage() {
+        context?.let {
+            Glide.with(it)
+                .load(imgUrlSlider)
+                .into(binding.ivLp1)
+
+        }
     }
 }

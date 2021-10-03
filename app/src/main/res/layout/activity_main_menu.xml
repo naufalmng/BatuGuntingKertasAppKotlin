@@ -121,29 +121,30 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|start"
             android:fontFamily="@font/open_sans_semibold"
-            android:textColor="@color/white"
             android:text="Selamat Datang"
-            android:textSize="15dp"/>
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/tv_name_toast"
-            android:layout_marginLeft="3dp"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|start"
+            android:layout_marginLeft="5dp"
+            android:paddingEnd="10dp"
             android:fontFamily="@font/open_sans_semibold"
-            android:textColor="@color/white"
             android:text="Name"
-            android:textSize="15dp"/>
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/tutup_btn"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
             android:layout_gravity="center"
             android:textAllCaps="false"
             android:text="Tutup"
-            android:textSize="17dp"
+            android:textSize="20dp"
             android:textColor="#FF9900"
             android:background="@android:color/transparent"
             android:backgroundTint="@android:color/transparent"/>
