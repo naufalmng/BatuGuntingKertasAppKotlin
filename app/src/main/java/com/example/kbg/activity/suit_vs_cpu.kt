@@ -35,14 +35,14 @@ class suit_vs_cpu : AppCompatActivity() {
     }
     private lateinit var p1Move: Suit
     private lateinit var com: Suit
-    var mp = MediaPlayer()
+    private var mp = MediaPlayer()
 
-    val menang = "MENANG!"
-    val seri = "SERI!"
-    val cpu = "CPU"
+    private val menang = "MENANG!"
+    private val seri = "SERI!"
+    private val cpu = "CPU"
     private var p1ButtonClicked: Boolean = false
     private var comButtonClicked: Boolean = false
-    var result: String? = null
+    private var result: String? = null
 
 
 

@@ -34,7 +34,7 @@ class suit_vs_pemain : AppCompatActivity() {
     private val menang = "MENANG!"
     private val seri = "SERI!"
     private val player2 = "Pemain 2"
-    var result: String? = null
+    private var result: String? = null
 
     private val rock = Rock("rock")
     private val paper = Paper("paper")
@@ -119,6 +119,7 @@ class suit_vs_pemain : AppCompatActivity() {
             createLog("Player 1 choose ${p1Move.element}")
             createLog("Player 2 choose ${p2Move.element}")
         }
+
     }
     private fun sendSuitStatus(status: String) {
         val intent = intent
