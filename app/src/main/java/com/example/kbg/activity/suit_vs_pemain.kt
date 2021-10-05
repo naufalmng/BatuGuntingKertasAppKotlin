@@ -229,7 +229,7 @@ class suit_vs_pemain : AppCompatActivity() {
 //        mp.start()
 //    }
 
-    fun playResetButtonSound() {
+    private fun playResetButtonSound() {
         mp.release()
         mp = MediaPlayer.create(this@suit_vs_pemain, R.raw.button_sound)
         mp.start()

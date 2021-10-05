@@ -17,20 +17,40 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp2_lp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
-            <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
+            android:background="@color/bg_color"
+            android:layout_gravity="center">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPlayerName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:inputType="textVisiblePassword"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:backgroundTint="#0070C0"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_marginTop="575dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="580dp"
-                    android:layout_gravity="bottom|center_horizontal"
                     android:orientation="horizontal">
-
                     <com.google.android.material.tabs.TabLayout
                         android:clickable="false"
                         android:id="@+id/tabLayout_lp"
@@ -38,57 +58,23 @@
                         android:backgroundTint="@null"
                         android:layout_height="25dp"
                         android:background="@null"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="130dp"
                         app:tabBackground="@drawable/tab_selector"
                         app:tabRippleColor="@null"
                         app:tabIndicatorHeight="0dp"
                         app:tabPadding="5dp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="580dp"
-                    android:layout_gravity="bottom|right"
-                    android:layout_marginRight="25dp"
-                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/nextBtn"
                         android:layout_width="30dp"
                         android:layout_height="40dp"
-                        android:layout_gravity="right"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="90dp"
                         android:background="@drawable/ic_play_button"
                         android:backgroundTint="#0070C0" />
-
                 </LinearLayout>
             </LinearLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/bg_color"
-                        android:layout_marginTop="125dp"
-                        android:layout_gravity="center">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etPlayerName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:inputType="textVisiblePassword"
-                            android:textColor="@color/black"
-                            android:textStyle="normal"
-                            android:paddingLeft="10dp"
-                            android:fontFamily="@font/open_sans_semibold"
-                            android:backgroundTint="#0070C0"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
         </FrameLayout>
 </RelativeLayout>
 

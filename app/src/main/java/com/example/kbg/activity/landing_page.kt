@@ -21,8 +21,8 @@ class landing_page : AppCompatActivity() {
          super.onCreate(savedInstanceState)
          binding = ActivityLandingPageBinding.inflate(layoutInflater)
          val view = binding.root
-        binding.nextBtn.visibility = View.GONE
-        binding.etPlayerName.visibility = View.GONE
+        binding.nextBtn.visibility = View.INVISIBLE
+        binding.etPlayerName.visibility = View.INVISIBLE
         binding.nextBtn.isClickable = false
          setContentView(view)
         setAdapterViewPager()
@@ -96,19 +96,19 @@ class landing_page : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 when(position){
-                    0 -> toggleViewGone()
-                    1 -> toggleViewGone()
+                    0 -> toggleInvisibleVIew()
+                    1 -> toggleInvisibleVIew()
                     2 -> toggleViewVisible()
                 }
             }
         })
     }
 
-    private fun toggleViewGone(){
+    private fun toggleInvisibleVIew(){
         val buttonNext = binding.nextBtn
         val editTextView = binding.etPlayerName
-        buttonNext.visibility = View.GONE
-        editTextView.visibility = View.GONE
+        buttonNext.visibility = View.INVISIBLE
+        editTextView.visibility = View.INVISIBLE
     }
 
     private fun toggleViewVisible(){
