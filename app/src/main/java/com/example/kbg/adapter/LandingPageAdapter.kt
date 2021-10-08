@@ -14,9 +14,9 @@ class LandingPageAdapter(fragmentManager: FragmentManager,lifecycle: Lifecycle):
     }
     override fun createFragment(position: Int): Fragment {
        return when(position){
-            0 -> landing_page1("https://i.ibb.co/x2JT0XQ/landing-page1.png")
-            1 -> landing_page2("https://i.ibb.co/RbCSDdn/landing-page2.png")
-            2 -> landing_page3("https://i.ibb.co/6Zmp3b4/landing-page3.png")
+            0 -> landing_page1("https://gist.githubusercontent.com/naufalmng/ac6d0fec95a4a0e3ba3055aa11d5c333/raw/82abb4b6509993262e5822eb462a7c51e68cdf28/landing-page1.svg")
+            1 -> landing_page2("https://gist.githubusercontent.com/naufalmng/ac6d0fec95a4a0e3ba3055aa11d5c333/raw/82abb4b6509993262e5822eb462a7c51e68cdf28/landing-page2.svg")
+            2 -> landing_page3("https://gist.githubusercontent.com/naufalmng/ac6d0fec95a4a0e3ba3055aa11d5c333/raw/82abb4b6509993262e5822eb462a7c51e68cdf28/landing-page3.svg")
             else -> Fragment()
         }
     }

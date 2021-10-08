@@ -66,14 +66,14 @@ class landing_page : AppCompatActivity() {
 
 
 
-    private fun initNextBtnOnClickListener(){
-        binding.nextBtn.setOnClickListener {
-            val intent = Intent(this,main_menu::class.java)
-            val playerName = binding.etPlayerName.text.toString()
-            intent.putExtra("playerName",playerName)
-            startActivity(intent)
-        }
-    }
+//    private fun initNextBtnOnClickListener(){
+//        binding.nextBtn.setOnClickListener {
+//            val intent = Intent(this,main_menu::class.java)
+//            val playerName = binding.etPlayerName.text.toString()
+//            intent.putExtra("playerName",playerName)
+//            startActivity(intent)
+//        }
+//    }
 
 
     private fun setAdapterViewPager(){

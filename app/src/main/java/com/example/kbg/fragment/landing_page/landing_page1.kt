@@ -1,14 +1,14 @@
 package com.example.kbg.fragment.landing_page
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
-import com.bumptech.glide.annotation.GlideModule
 import com.example.kbg.R
 import com.example.kbg.databinding.FragmentLandingPage1Binding
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 
 class landing_page1( private val imgUrlSlider: String) :
 
@@ -31,11 +31,8 @@ class landing_page1( private val imgUrlSlider: String) :
 
 
     private fun setDataImage() {
-        context?.let {
-            Glide.with(it)
-                .load(imgUrlSlider)
-                .into(binding.ivLp1)
-
-        }
+        GlideToVectorYou.init()
+            .with(this.context)
+            .load(Uri.parse(imgUrlSlider),binding.ivLp1)
     }
 }
