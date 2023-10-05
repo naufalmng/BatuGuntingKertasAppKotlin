@@ -1,5 +1,8 @@
 # Batu Gunting Kertas Android App Game Kotlin
 
+PROJECT LATIHAN 
+GAME SUIT BATU GUNTING KERTAS
+
 FITUR:
 - Animasi Splash Screen
 - Landing Page
